@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { projectFirestore } from '../../firebase/config'
 //Style
 import styles from './Signup.module.css'
 
@@ -9,7 +10,6 @@ export default function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(email, password, displayName)
 
     }
     return(
