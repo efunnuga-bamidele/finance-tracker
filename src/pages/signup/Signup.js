@@ -3,13 +3,20 @@ import { projectFirestore } from '../../firebase/config'
 //Style
 import styles from './Signup.module.css'
 
+//custom Hooks
+
+import { useSignup } from '../../hooks/useSignup'
+
 export default function Signup() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [displayName, setDisplayName] = useState('')
+    //use the useSignup hook
+    const { signup, isPending, error } = useSignup()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        signup(email, password, displayName)
 
     }
     return(
@@ -42,7 +49,9 @@ export default function Signup() {
                     value={displayName}
                 />
             </label>
-            <button className='btn'>Sign up</button>
+            {!isPending && <button className='btn'>Sign up</button>}
+            {isPending && <button className='btn' disabled>loading</button>}
+            {error && <p>{error}</p>}
         </form>
     )
 }
