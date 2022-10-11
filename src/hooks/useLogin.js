@@ -17,6 +17,7 @@ export const useLogin = () => {
 
 
             dispatch({type: 'LOGIN', payload: res.user})
+            //Temporary to bypass cleanup function
             setIsPending(false)
 
             //update State

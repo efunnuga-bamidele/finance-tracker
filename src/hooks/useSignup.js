@@ -34,6 +34,8 @@ export const useSignup = () => {
 
         //dispatch login action
         dispatch({type: 'LOGIN', payload: res.user})
+        //Temporary to bypass cleanup function
+        setIsPending(false)
 
         //update state
            if(!isCancelled){
