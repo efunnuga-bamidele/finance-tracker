@@ -27,9 +27,11 @@ const logout = async () => {
             setError(null)
         }
     }catch (err){
-        console.log(err.message)
-        setError(err.message)
-        setIsPending(false)
+        if(!isCancelled){
+            console.log(err.message)
+            setError(err.message)
+            setIsPending(false)
+            }
     }
 }
 

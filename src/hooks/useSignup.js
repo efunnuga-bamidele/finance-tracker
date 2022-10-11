@@ -42,15 +42,18 @@ export const useSignup = () => {
            }
 
         }catch (err){
-            console.log(err.message)
-            setError(err.message)
-            setIsPending(false)
+            if(!isCancelled){
+                console.log(err.message)
+                setError(err.message)
+                setIsPending(false)
+                }
         }
     }
+
     useEffect(() => {
+        console.log("UseEffect fired")
         return () => setIsCancelled(true)
     }, [])
-    
 
     return { error, isPending, signup }
 
