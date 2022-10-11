@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { projectFirestore } from '../../firebase/config'
 //Style
 import styles from './Signup.module.css'
 
