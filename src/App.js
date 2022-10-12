@@ -13,7 +13,6 @@ function App() {
   // const redirect = useNavigate()
 
   //Edit the route to have a redirect
-  // <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />}></Route>
   return (
     <div className="App">
     {authIsReady && (
