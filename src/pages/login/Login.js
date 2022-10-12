@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import { useLogin } from '../../hooks/useLogin'
+
 
 //Styles
 import styles from './Login.module.css'
+
+//Hooks
+import { useLogin } from '../../hooks/useLogin'
 
 export default function Login() {
     const [email, setEmail] = useState('')

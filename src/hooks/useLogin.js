@@ -11,35 +11,36 @@ export const useLogin = () => {
     const login = async (email, password) => {
         setError(null)
         setIsPending(true)
-
-        try{
-            const res = await projectAuth.signInWithEmailAndPassword(email, password)
-
-
-            dispatch({type: 'LOGIN', payload: res.user})
-            //Temporary to bypass cleanup function
-            // setIsPending(false)
-
-            //update State
-            if(!isCancelled){
-                setIsPending(false)
-                setError(null)
-            }
-
-        }catch(err){
-            if(!isCancelled){
-            console.log(err.message)
+      
+        try {
+          // login
+          const res = await projectAuth.signInWithEmailAndPassword(email, password)
+    
+          // dispatch login action
+          dispatch({ type: 'LOGIN', payload: res.user })
+    
+          if (!isCancelled) {
+            setIsPending(false)
+            setError(null)
+          }
+        } 
+        catch(err) {
+          if (!isCancelled) {
             setError(err.message)
             setIsPending(false)
-            }
+          }
         }
-        
+      }
+    
+      useEffect(() => {
+        const unsub = () => {
+            // console.log("UseEffect fired late")
+            setIsCancelled(true)
+            
+        }
+        // unsub()
+        console.log("IsCancelled : ", isCancelled)
+      }, [])
+    
+      return { login, isPending, error }
     }
-
-    useEffect(() => {
-        console.log("UseEffect fired")
-        return () => setIsCancelled(true)
-    }, [])
-
-    return { login, error, isPending }
-}

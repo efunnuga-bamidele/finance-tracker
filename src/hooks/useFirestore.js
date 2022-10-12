@@ -56,7 +56,7 @@ export const useFirestore = (collection) => {
     }
 
     useEffect(() => {
-        return () => setIsCancelled(true)
+        const unsub = () => setIsCancelled(true)
     }, [])
 
     return { addDocument, deleteDocument, response }

@@ -53,8 +53,8 @@ export const useSignup = () => {
     }
 
     useEffect(() => {
-        console.log("UseEffect fired")
-        return () => setIsCancelled(true)
+       
+        const unsub = () => setIsCancelled(true)
     }, [])
 
     return { error, isPending, signup }
